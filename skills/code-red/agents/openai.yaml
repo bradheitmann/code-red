@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Red"
+  short_description: "One-hour recovery through execution and inversion"
+  default_prompt: "Use $code-red to deliver my urgent objective within one hour with an execution orchestrator and an independent inversion analyst, preserving all work already in flight."

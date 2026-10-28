@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.wrangler/
+.cloudflare/
+.cf/
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+coverage/
+.DS_Store
+*.log
+private/
+run-records/

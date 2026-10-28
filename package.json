@@ -1,0 +1,69 @@
+{
+  "name": "@bradheitmann/code-red",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Read-only Code Red skill and prompt distribution over MCP",
+  "scripts": {
+    "typecheck": "pnpm run generate && tsc --noEmit",
+    "test": "pnpm run generate && tsx --test server/test/*.test.ts",
+    "dev": "pnpm run generate && cf dev",
+    "build": "pnpm run generate && cf build",
+    "deploy": "pnpm run generate && cf deploy",
+    "generate": "tsx server/scripts/bundle-content.ts",
+    "build:library": "pnpm run generate && tsc -p server/tsconfig.build.json",
+    "prepack": "pnpm run typecheck && pnpm test && pnpm run build:library"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.4.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "2.0.0-beta.v.6",
+    "@cloudflare/workers-types": "5.20261028.1",
+    "@types/node": "24.10.0",
+    "cf": "1.0.0-beta.24",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vite": "8.3.5"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradheitmann/code-red.git"
+  },
+  "homepage": "https://github.com/bradheitmann/code-red#readme",
+  "keywords": [
+    "mcp",
+    "code-red",
+    "agent-skill",
+    "inversion",
+    "cloudflare-workers"
+  ],
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "packageManager": "pnpm@12.14.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./skill": "./skills/code-red/SKILL.md",
+    "./skills/*": "./skills/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "skills/code-red/**",
+    "README.md",
+    "LICENSE",
+    "VERSION",
+    "server/README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
