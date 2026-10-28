@@ -19,6 +19,20 @@ Choose available agents by capability and actual quota pool, not brand. Either C
 
 Read [roles-and-messages.md](references/roles-and-messages.md) when establishing the pair or dispatching workers. Workers are not additional leads; implementation and independent verification may use different workers.
 
+## Before the hour: capabilities and a working channel
+
+Have two separate lead contexts, a subagent-capable execution harness and suitable model for A, finite capacity/budget, authorized repository and test access, and an objective, acceptance oracle and timebox. A provider or model is not a harness: changing models does not supply worker delegation, tools or messaging. Different vendors are optional; verify shared quota constraints. For a beginner setup and portable harness choices, read [setup-and-communication.md](references/setup-and-communication.md).
+
+Bind A/B recipient identities and a working message transport. Before starting the hour, send a unique probe each way and obtain an explicit recipient acknowledgment. Agree who checks receipt/timeouts, a safe fallback route and escalation owner. Default response bound for an actionable finding is the next affected decision or five minutes, whichever is sooner; adjust it upfront to the actual task and remaining hour. A terminal multiplexer is not a mailbox. Markdown alone cannot wake an idle or suspended harness: use the existing harness/orchestrator receipt and timeout mechanism, an existing external scheduler, or an agreed human relay. Do not build new incident tooling to make this skill work, or claim a working two-agent feedback loop while that capability is unresolved. Continue unrelated authorized work.
+
+## Communicate findings, not silence
+
+**Token efficiency never means silence.** B proactively delivers every actionable finding to A through the tested channel, with an ID, recommendation, strongest objection and cheapest falsifier. A sends decision requests and material state changes back to B. A durable ledger preserves evidence; it does not deliver a finding. Notify the actual recipient, for example: `B-07: updated <path>, please read <section>; decision needed before <checkpoint>`. Include enough substance to act without discovering an unread file.
+
+Distinguish submission, transport delivery/readback, explicit recipient receipt and A's disposition. For each actionable B finding, A returns **ADOPT**, **TEST** (owner and bounded next action), **REJECT** (reason), or **DEFER** (reason and exact checkpoint). A disposition is not proof that its action succeeded. Routine observations may be batched; decision-changing or blocking findings must reach the recipient before the affected decision. Do not require an acknowledgment for every routine message or make B an approval gate for all A work. A cannot unilaterally silence B or substitute an unread file for the agreed channel; B should report that as a communication failure.
+
+If receipt/disposition is missing at the agreed bound, check actual available evidence, then use the declared safe fallback once or one concise escalation to the named owner. Inspect an ambiguous submission before resending; deduplicate by finding ID. Do not spam, overwrite a draft, force-interrupt valid work or manufacture read telemetry. Preserve an unresolved decision-dependent risk explicitly; continue unrelated authorized work, and do not claim the finding was accepted or the feedback loop restored until evidenced. Detailed messages and an example are in [roles-and-messages.md](references/roles-and-messages.md).
+
 ## Start the clock and define success
 
 Record actual start time and an absolute deadline exactly 60 minutes later. Read the clock before dispatch and after tool/agent boundaries. Compaction, handoff, retries, and model changes retain that deadline. A run can finish early; it never renews itself. This skill installs no timer or background service and cannot wake a suspended harness.
@@ -27,7 +41,7 @@ Use the existing task record, or the small [run card](assets/run-card.md). Captu
 
 - One concrete objective and observable acceptance criterion; exact artifact or user-visible behavior.
 - Actual state and evidence, applicable authority, source/input identity, and mandatory safety/proof constraints.
-- A/B identities and communication route; finite resource limits and actual remaining budget where observable.
+- A/B identities, tested communication route, reciprocal probe acknowledgments, actionable-response bound, fallback and timeout owner; finite resource limits and actual remaining budget where observable.
 - Existing outside work: owner, occupied files/resources, expected handoff or landing route. Reuse existing records.
 - Deadline, output location, and the smallest useful honest fallback if the full objective cannot fit.
 
@@ -80,7 +94,7 @@ This combines independent framing with causal ablation: the team's own machinery
 
 Organize around terminal artifacts and scarce dependencies, not an automatic sequence of departments. Useful worker functions include a focused repair author, independent narrow verifier, sole integrator, package producer, and one shared observer of live evidence. Assign only functions needed for this objective; one worker may perform compatible functions sequentially. A verifier must not accept its own authored changes.
 
-Keep the orchestrator's inbox small: decision needed, blocking failure, frozen artifact, independent verdict, or integration result. Put routine observations in the existing durable record. Observers consume published artifacts; they do not each poll the same expensive source or start competing runs. Prebuild independent package scaffolding while execution proceeds, but resolve final hashes after the artifact freezes.
+Keep the orchestrator's inbox small: decision needed, blocking failure, frozen artifact, independent verdict, or integration result. Batch routine observations in the existing durable record with an agreed notice; proactively deliver anything that changes a decision. Observers consume published artifacts; they do not each poll the same expensive source or start competing runs. Prebuild independent package scaffolding while execution proceeds, but resolve final hashes after the artifact freezes.
 
 After forming an independent approach, inspect any incumbent team's arrangement. If communication is authorized, ask once which constraint shaped its roles, which surprising tactic helped, and which failed. Adopt demonstrated mechanisms, not a charismatic account of success. Do not require a reply before execution or disturb in-flight work. Distinguish their stated rationale, your inference, and observed outcomes.
 

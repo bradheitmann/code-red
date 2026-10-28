@@ -6,7 +6,7 @@ import { basename } from 'node:path';
 const file = process.argv[2];
 if (!file) throw new Error('Usage: pnpm exec tsx server/scripts/check-package.ts <reviewed.tgz>');
 const entries = execFileSync('tar', ['-tzf', file], { encoding: 'utf8' }).trim().split('\n');
-const allowed = /^(?:package\/(?:LICENSE|VERSION|package\.json|README\.md|server\/README\.md|assets\/route\.svg)|package\/dist\/(?:index|generated\/content)\.(?:js|d\.ts)|package\/skills\/code-red\/(?:SKILL\.md|agents\/openai\.yaml|assets\/run-card\.md|references\/(?:casebook|inversion-methods|roles-and-messages)\.md))$/;
+const allowed = /^(?:package\/(?:LICENSE|VERSION|package\.json|README\.md|server\/README\.md|assets\/route\.svg)|package\/dist\/(?:index|generated\/content)\.(?:js|d\.ts)|package\/skills\/code-red\/(?:SKILL\.md|agents\/openai\.yaml|assets\/run-card\.md|references\/(?:casebook|inversion-methods|roles-and-messages|setup-and-communication)\.md))$/;
 for (const entry of entries) {
   if (!allowed.test(entry)) throw new Error(`Unexpected tarball entry: ${entry}`);
   const content = execFileSync('tar', ['-xOf', file, entry], { encoding: 'utf8' });

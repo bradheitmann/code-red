@@ -3,6 +3,11 @@
 This public, read-only server distributes the canonical skill in `skills/code-red/`.
 It returns instructions and task briefs; it does not launch agents, inspect client
 workspaces, run interventions, choose models, or call model providers.
+The client must provide the execution and communication prerequisites in the
+[setup recipe](../skills/code-red/references/setup-and-communication.md): two lead
+contexts, worker capability, budget, authorized proof access and a tested message
+route with receipt/timeout follow-through. Fetching a resource or prompt does not
+create that route or prove the leads can communicate.
 
 ## Local development and checks
 

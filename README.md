@@ -51,6 +51,25 @@ The first few minutes establish the outcome and launch useful probes. The middle
 
 The full operating contract is [the skill](skills/code-red/SKILL.md). Ready-to-use [role prompts](skills/code-red/references/roles-and-messages.md) and a minimal [run card](skills/code-red/assets/run-card.md) keep coordination small.
 
+## Before you start
+
+You need two separate lead contexts; an execution harness and model that can delegate to subagents and collect their results; finite capacity/budget; authorized repository and test access; and one objective, acceptance oracle and 60-minute timebox. A provider/model supplies reasoning, while a harness supplies tools, delegation and communication. Two different vendors are optional; shared quotas still count.
+
+**Token efficiency never means silence.** Choose an operational A↔B channel for the actual harnesses. Native agent messaging, an orchestration bus, tmux with an existing herder adapter, cmux or another multiplexer plus a real transport, or protected computer use may serve. A multiplexer alone is not a mailbox. A saved ledger or a queued message does not establish that the other lead received a finding; Markdown cannot wake a suspended harness.
+
+Before the hour, send a unique probe each way and obtain an explicit recipient acknowledgment. Agree a receipt/timeout owner, a response bound and a safe fallback. By default an actionable finding needs a response before the next affected decision or within five minutes, whichever is sooner; adjust the bound upfront to the task. B directly delivers each actionable finding with an ID, recommendation, strongest objection and cheapest falsifier. A returns **adopt, test, reject or defer**, with a reason and concrete owner/next step or exact checkpoint as applicable. Keep submission, delivery/readback, receipt, disposition and actual execution separate.
+
+Batch routine updates; deliver decision-changing findings proactively. If a response misses its bound, inspect an ambiguous send before one safe fallback or concise named-owner escalation, deduplicating the ID. Protect drafts and valid runs, continue unrelated work, and never claim the loop works while receipt is unresolved. A cannot silence B to save tokens, and B does not become an approval gate for every A action. Use an existing harness/orchestrator timeout mechanism or agreed relay; do not spend the incident building communication tooling.
+
+For a first run:
+
+1. Load the skill in two separate contexts and assign A execution/B inversion using the [role prompts](skills/code-red/references/roles-and-messages.md).
+2. Fill in the [run card](skills/code-red/assets/run-card.md) with the actual objective, oracle, inputs, authority, protected work, budget and recipients.
+3. Verify worker capability and the reciprocal message probes; bind timeout/fallback ownership before starting the hour.
+4. Start the clock, run bounded work, and directly notify the other lead when a finding changes a decision. A saved analysis needs an `updated path, please read` notice and an explicit disposition.
+
+The [setup and communication recipe](skills/code-red/references/setup-and-communication.md) covers these checks and the lost-message fallback in detail.
+
 ## Intellectual roots
 
 Code Red combines several traditions. “Inversion testing” is our name for this synthesis, not a claim that these thinkers founded one unified method.
@@ -95,6 +114,8 @@ cp -R skills/code-red "$HOME/.claude/skills/code-red"
 Alternatively, link both harnesses to one canonical copy to avoid drift. Reload skill discovery or use a new session if the running harness caches its catalog; do not interrupt an active team just to install.
 
 **Codex:** invoke `$code-red`. **Claude Code:** invoke `/code-red`.
+
+For Pi, OpenCode, Goose, Crush, or a harness using a DeepSeek-compatible provider, load or attach the same Markdown through that harness's existing instruction mechanism and verify its worker and communication capabilities. These are portable instruction-loading routes, not claims of tested native integrations. No other harness is installed or modified by this project. Installing text or connecting the MCP server does not supply an execution runtime.
 
 Example:
 
