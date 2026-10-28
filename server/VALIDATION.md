@@ -7,6 +7,7 @@ Validated on 2026-10-28 with Node 26.12.0 and pnpm 12.14.0.
 - `pnpm run build`: PASS, cf CLI delegates to Cloudflare Vite plugin; Worker bundle approximately 778 KB / 188 KB gzip.
 - `pnpm audit`: no known vulnerabilities.
 - `pnpm run build:library`: PASS, ESM and declaration output.
+- `pnpm exec cf workers check --prebuilt --outfile <external-profile-path>`: PASS; locally measured active startup time about 40 ms, bundle 779,481 bytes / 187,441 bytes gzip. This local measurement does not predict deployed Cloudflare startup time.
 - Start `pnpm dev`, then in a second shell run `MCP_TEST_ORIGIN=http://localhost:5173 pnpm test`: PASS, all 9 tests against the actual Workers runtime. Use the origin printed by the local dev server if its port differs.
 
 Protocol coverage: legacy initialize, current 2026-07-28 discovery and per-request envelope, resource listing and exact canonical reads, prompt listing/retrieval/argument validation, unknown methods/resources, notifications, HTTP methods, session-free operation, origin rejection, body-size limit, malformed JSON, unsupported protocol revision and media type.
