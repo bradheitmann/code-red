@@ -6,7 +6,10 @@ workspaces, run interventions, choose models, or call model providers.
 
 ## Local development and checks
 
-From a source checkout, use Node 22.18 or newer and pnpm. The cf CLI does not support Bun.
+From a source checkout, use a supported Node release (22.23+, 24.22+, or 26.12+)
+and pnpm. These are the pinned cf CLI's runtime requirements; Bun is not supported.
+The published ESM library has a broader Node 22.18+ requirement because using it
+does not invoke the development-only cf CLI.
 
 ```sh
 pnpm install --frozen-lockfile

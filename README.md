@@ -16,24 +16,7 @@ Code Red gives that situation a different operating mode: **two lead agents, one
 
 The desired result is a working artifact with evidence. When the complete objective cannot fit, the result is an explicitly partial deliverable and exact next action—not another optimistic status report.
 
-```mermaid
-flowchart LR
-    O["One concrete objective"] --> A["A · EXECUTE\nBounded worker waves"]
-    O --> B["B · INVERT\nChallenge necessity"]
-    A --> X["Blocked dependency"]
-    X -. "repeat the same route" .-> X
-    B --> S["SUBTRACT\nCan this dependency disappear?"]
-    S --> T["Small falsifiable experiment"]
-    T -->|"same acceptance · less work"| D["Deliver + verify"]
-    T -->|"counterexample"| B
-    A --> D
-    P["Existing work continues\nOwnership and proofs preserved"] --- D
-    style X fill:#4b2027,stroke:#ef6671,color:#fff
-    style S fill:#183f46,stroke:#4fd1c5,color:#fff
-    style D fill:#24442e,stroke:#7ddc91,color:#fff
-    style A fill:#252a48,stroke:#98a4ff,color:#fff
-    style B fill:#252a48,stroke:#98a4ff,color:#fff
-```
+![Two leads change the route around a blocked dependency while preserving the same acceptance test and existing work.](assets/route.svg)
 
 ## What changes during Code Red
 
@@ -116,6 +99,19 @@ Alternatively, link both harnesses to one canonical copy to avoid drift. Reload 
 Example:
 
 > Use Code Red. Within one hour, deliver an installable candidate that reproduces the reported failure, fixes it, and passes the existing acceptance checks. Keep all current agents' work intact. Use the available worker budget; do not purchase additional capacity.
+
+## npm package
+
+The package contains the skill files and the compiled MCP server library:
+
+```sh
+pnpm add @bradheitmann/code-red
+```
+
+To install the skill from the package, copy `node_modules/@bradheitmann/code-red/skills/code-red`
+to your harness's skill directory, using the same existing-installation precautions above.
+Installing the package does not start a server or launch agents. For hosting and development,
+use the source checkout and the server documentation.
 
 ## MCP distribution
 
