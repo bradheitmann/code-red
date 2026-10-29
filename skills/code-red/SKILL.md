@@ -1,11 +1,11 @@
 ---
 name: code-red
-description: Run a one-hour recovery sprint when the current process is failing an urgent objective. Pair a resource-constrained execution orchestrator with an independent inversion analyst, using bounded worker waves, backward reasoning, and a blind subtraction experiment while preserving ongoing work.
+description: Run a four-hour recovery sprint with a one-hour permission checkpoint when the current process is failing an urgent objective. Pair a resource-constrained execution orchestrator with an independent inversion analyst, using bounded worker waves, backward reasoning, and a blind subtraction experiment while preserving ongoing work.
 ---
 
 # Code Red
 
-Reject the inherited process as the default route to the objective. Spend one hour finding and executing a better route. Preserve the actual objective, truthful evidence, and work already in flight.
+Reject the inherited process as the default route to the objective. Plan a four-hour window; use the first hour to find and execute a better route, then check in with the user before continuing. Preserve the actual objective, truthful evidence, and work already in flight.
 
 This is a two-lead operating mode with a bounded worker pool. It is not a promise that adding agents makes work faster. It changes how the team searches for a solution, not the truth required to claim success.
 
@@ -19,11 +19,11 @@ Choose available agents by capability and actual quota pool, not brand. Either C
 
 Read [roles-and-messages.md](references/roles-and-messages.md) when establishing the pair or dispatching workers. Workers are not additional leads; implementation and independent verification may use different workers.
 
-## Before the hour: capabilities and a working channel
+## Before the clock: capabilities and a working channel
 
 Have two separate lead contexts, a subagent-capable execution harness and suitable model for A, finite capacity/budget, authorized repository and test access, and an objective, acceptance oracle and timebox. A provider or model is not a harness: changing models does not supply worker delegation, tools or messaging. Different vendors are optional; verify shared quota constraints. For a beginner setup and portable harness choices, read [setup-and-communication.md](references/setup-and-communication.md).
 
-Bind A/B recipient identities and a working message transport. Before starting the hour, send a unique probe each way and obtain an explicit recipient acknowledgment. Agree who checks receipt/timeouts, a safe fallback route and escalation owner. Default response bound for an actionable finding is the next affected decision or five minutes, whichever is sooner; adjust it upfront to the actual task and remaining hour. A terminal multiplexer is not a mailbox. Markdown alone cannot wake an idle or suspended harness: use the existing harness/orchestrator receipt and timeout mechanism, an existing external scheduler, or an agreed human relay. Do not build new incident tooling to make this skill work, or claim a working two-agent feedback loop while that capability is unresolved. Continue unrelated authorized work.
+Bind A/B recipient identities and a working message transport. Before starting the clock, send a unique probe each way and obtain an explicit recipient acknowledgment. Agree who checks receipt/timeouts, a safe fallback route and escalation owner. Default response bound for an actionable finding is the next affected decision or five minutes, whichever is sooner; adjust it upfront to the actual task and remaining window. A terminal multiplexer is not a mailbox. Markdown alone cannot wake an idle or suspended harness: use the existing harness/orchestrator receipt and timeout mechanism, an existing external scheduler, or an agreed human relay. Do not build new incident tooling to make this skill work, or claim a working two-agent feedback loop while that capability is unresolved. Continue unrelated authorized work.
 
 ## Communicate findings, not silence
 
@@ -35,7 +35,7 @@ If receipt/disposition is missing at the agreed bound, check actual available ev
 
 ## Start the clock and define success
 
-Record actual start time and an absolute deadline exactly 60 minutes later. Read the clock before dispatch and after tool/agent boundaries. Compaction, handoff, retries, and model changes retain that deadline. A run can finish early; it never renews itself. This skill installs no timer or background service and cannot wake a suspended harness.
+Record actual start time and an absolute deadline exactly four hours later, with a permission checkpoint at one hour. Notify the user at start that this is a four-hour plan with a one-hour checkpoint. Read the clock before dispatch and after tool/agent boundaries. Compaction, handoff, retries, model changes and checkpoint approval all retain that four-hour endpoint: a run can finish early but never renews itself or resets the endpoint. This skill installs no timer or background service and cannot wake a suspended harness.
 
 Use the existing task record, or the small [run card](assets/run-card.md). Capture only what is needed:
 
@@ -43,15 +43,15 @@ Use the existing task record, or the small [run card](assets/run-card.md). Captu
 - Actual state and evidence, applicable authority, source/input identity, and mandatory safety/proof constraints.
 - A/B identities, tested communication route, reciprocal probe acknowledgments, actionable-response bound, fallback and timeout owner; finite resource limits and actual remaining budget where observable.
 - Existing outside work: owner, occupied files/resources, expected handoff or landing route. Reuse existing records.
-- Deadline, output location, and the smallest useful honest fallback if the full objective cannot fit.
+- Deadline, one-hour permission checkpoint, output location, and the smallest useful honest fallback if the full objective cannot fit.
 
-Infer routine choices from the request. Ask only for missing information an agent cannot resolve; proceed on independent work. A fallback is explicitly partial unless the user changes the objective. A four-hour physical process cannot be made a one-hour proof by changing its label.
+Infer routine choices from the request. Ask only for missing information an agent cannot resolve; proceed on independent work. A fallback is explicitly partial unless the user changes the objective. One hour is a visible-results assessment target, never a productivity guarantee; a physical process that genuinely needs four hours cannot be made a one-hour proof by changing its label.
 
 ## Preserve other agents' in-process work
 
 **Let all work already assigned or in flight outside the pair finish and land naturally through its existing authority.** Do not cancel, pause, reset, overwrite, rebase, remove its checkout, steal ownership, revoke its resources, or duplicate its assignment to accelerate Code Red. Do not force those agents into the new pair's reporting hierarchy.
 
-Route new work around occupied files and resources. Read their published results and accept handoffs when offered; coordinate an overlap through the existing owner instead of becoming a second writer. Preserve dirty work, failed evidence, attempt histories, pins, and existing proof runs. At the Code Red deadline, outside work may continue unaffected. An actual safety incident follows the existing incident authority; urgency alone is not an incident.
+Route new work around occupied files and resources. Read their published results and accept handoffs when offered; coordinate an overlap through the existing owner instead of becoming a second writer. Preserve dirty work, failed evidence, attempt histories, pins, and existing proof runs. At the one-hour checkpoint and at the four-hour deadline, outside work may continue unaffected. An actual safety incident follows the existing incident authority; urgency alone is not an incident.
 
 ## Resource-limited intensity
 
@@ -63,16 +63,20 @@ Parallelize independent hypotheses, packaging, narrow tests, and artifact prepar
 
 A usage estimate or warning is not exhaustion. On an actual limit/error, preserve the exact failure, keep unaffected work moving, and use an already-authorized fallback. Role takeover requires an existing delegation/owner instruction; this skill itself grants no authority over other teams. Transfer the remaining clock, budget, work ownership, and evidence rather than starting over.
 
-## The hour
+## The four-hour window
 
-These are pacing guides, not wait gates:
+These are pacing guides, not wait gates. The first hour ends with a permission checkpoint; the remaining three hours continue only with explicit user approval.
 
 | Time | A: execute | B: invert |
 |---|---|---|
-| 0–5 min | Bind objective; launch ready independent tasks and the blind subtraction worker. | Draw a backward dependency chain; identify the most expensive unsupported necessity. |
-| 5–40 min | Run bounded waves; integrate useful results continuously. | Select two or three relevant inversion techniques; propose the next cheap falsifiable move. |
-| 40–50 min | Converge on the best evidenced route; narrow new work to delivery blockers. | Attack the winning explanation and inspect displaced costs or omitted requirements. |
-| 50–60 min | Verify, package, pin, and hand off. Admit only work that can fit the remaining time including verification. | State what the evidence supports, what would refute it, and what remains unproven. |
+| 0–5 min | Bind objective; notify the user of the four-hour plan and one-hour checkpoint; launch ready independent tasks and the blind subtraction worker. | Draw a backward dependency chain; identify the most expensive unsupported necessity. |
+| 5–50 min | Run bounded waves; integrate useful results continuously. | Select two or three relevant inversion techniques; propose the next cheap falsifiable move. |
+| 50–60 min | Prepare the one-hour checkpoint: delivered evidence/behavior changes, resource use, strongest counterevidence, next plan. | State what the evidence supports, what would refute it, and what remains unproven. |
+| **1 h — permission checkpoint** | Present the checkpoint and ask the user for explicit permission to continue the remaining three hours. Silence is not consent. | No new dispatch or spending without approval. |
+| 1–3.5 h (approved) | Continue bounded waves; converge on the best evidenced route. | Attack the winning explanation; inspect displaced costs or omitted requirements. |
+| 3.5–4 h | Verify, package, pin, and hand off. Admit only work that can fit the remaining time including verification. | State what the evidence supports, what would refute it, and what remains unproven. |
+
+The one-hour permission check is owner-requested: never remove it as ceremony. Present observations as observations, not guarantees; the one hour is a design target, never a productivity promise.
 
 Use [inversion-methods.md](references/inversion-methods.md) for technique selection and [casebook.md](references/casebook.md) for historical mechanisms and limits. Do not perform the entire catalog as ceremony.
 
@@ -100,7 +104,7 @@ After forming an independent approach, inspect any incumbent team's arrangement.
 
 ## End honestly
 
-At the deadline, stop new dispatch and spending on this run. Do not hard-kill an atomic operation or other agents' work; use a safe checkpoint or existing bounded finish, record any wind-down beyond the deadline, and assign custody without extending Code Red. No automatic second hour.
+At the one-hour checkpoint, present delivered evidence/behavior changes, resource use, strongest counterevidence and the next plan, then ask the user for explicit permission to continue the remaining three hours; silence is not consent, and without approval no new dispatch or spending happens after the checkpoint — preserve in-flight work via safe custody, never force-kill. At the four-hour deadline, stop new dispatch and spending on this run. Do not hard-kill an atomic operation or other agents' work; use a safe checkpoint or existing bounded finish, record any wind-down beyond the deadline, and assign custody without extending Code Red. No automatic renewal; the four-hour endpoint stays anchored to the original start.
 
 Deliver the artifact or exact partial state, immutable identity/checksums where appropriate, reproducible use instructions, observed verification, remaining blockers, resource usage (unknown where unmeasured), and owner/next action for continuing work. Separate authored, tested, independently accepted, integrated, and live-qualified claims. Never combine successful phases from different runs into a fictional complete run.
 

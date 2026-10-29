@@ -4,15 +4,15 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Agent skill](https://img.shields.io/badge/agent_skill-Codex_%2B_Claude_Code-6f42c1)](skills/code-red/SKILL.md)
-[![Timebox](https://img.shields.io/badge/timebox-60_minutes-e5484d)](skills/code-red/SKILL.md#the-hour)
+[![Timebox](https://img.shields.io/badge/timebox-4_hours_1h_checkpoint-e5484d)](skills/code-red/SKILL.md#the-four-hour-window)
 
 ## The job to be done
 
-> **When my coding factory is busy but cannot finish, help me remove the process-created blockers and deliver the strongest verifiable result within one hour—without disrupting work already underway or weakening what “done” means.**
+> **When my coding factory is busy but cannot finish, help me remove the process-created blockers and deliver the strongest verifiable result within four hours—with a one-hour permission checkpoint—without disrupting work already underway or weakening what “done” means.**
 
 Agents can become exceptionally good at maintaining a process that no longer serves its purpose. A review requests another review. Verification needs infrastructure that needs verification. Each worker produces something, yet nothing reaches the user. The response is often more agents, more instructions, and more coordination around the same obstruction.
 
-Code Red gives that situation a different operating mode: **two lead agents, one hour, one objective, and a bounded pool of workers.** One lead drives execution while conserving scarce model credits. The other takes over the analytical burden and asks which assumptions, dependencies, or layers make the obstruction necessary in the first place.
+Code Red gives that situation a different operating mode: **two lead agents, four hours with a one-hour permission checkpoint, one objective, and a bounded pool of workers.** One lead drives execution while conserving scarce model credits. The other takes over the analytical burden and asks which assumptions, dependencies, or layers make the obstruction necessary in the first place.
 
 The desired result is a working artifact with evidence. When the complete objective cannot fit, the result is an explicitly partial deliverable and exact next action—not another optimistic status report.
 
@@ -41,23 +41,23 @@ The worker gets at most five minutes within the existing budget. The analyst the
 
 There is a reason to force this question. Across eight experiments, Adams and colleagues found that participants systematically overlooked beneficial subtractive changes under the tested conditions. Prompting subtraction can reveal options that normal improvement requests miss. This finding motivates the probe; it is not a performance guarantee for agents. [Study](https://pubmed.ncbi.nlm.nih.gov/33828317/)
 
-## One hour, two complementary minds
+## Four hours, two complementary minds
 
 - **A: execution orchestrator.** Conserves scarce model credits and attention; assigns small jobs, collects artifacts, and integrates. A keeps working while B reasons.
 - **B: inversion analyst.** Works backward, constructs failure scenarios, attacks assumptions, and designs cheap experiments. B is a thinking partner, not an approval queue.
-- **Workers:** bounded independent tasks, with separate authorship and verification where required. Default ceilings are 32 jobs over the hour and 8 concurrent workers, reduced by actual capacity and budget. More workers are useful only when they remove real independent work from the critical path.
+- **Workers:** bounded independent tasks, with separate authorship and verification where required. Default ceilings are 32 jobs over the window and 8 concurrent workers, reduced by actual capacity and budget. More workers are useful only when they remove real independent work from the critical path.
 
-The first few minutes establish the outcome and launch useful probes. The middle of the hour tests alternatives and converges. The final ten minutes prioritize verification and delivery. The absolute deadline survives handoffs and context resets. No automatic second hour; no silent definition-of-done change.
+The first few minutes establish the outcome and launch useful probes. The first hour builds toward a permission checkpoint: present delivered evidence, resource use, strongest counterevidence and the next plan, then ask the user to continue. The middle of the window tests alternatives and converges. The final stretch prioritizes verification and delivery. The absolute deadline survives handoffs, context resets, and the checkpoint approval. No automatic renewal; no silent definition-of-done change.
 
 The full operating contract is [the skill](skills/code-red/SKILL.md). Ready-to-use [role prompts](skills/code-red/references/roles-and-messages.md) and a minimal [run card](skills/code-red/assets/run-card.md) keep coordination small.
 
 ## Before you start
 
-You need two separate lead contexts; an execution harness and model that can delegate to subagents and collect their results; finite capacity/budget; authorized repository and test access; and one objective, acceptance oracle and 60-minute timebox. A provider/model supplies reasoning, while a harness supplies tools, delegation and communication. Two different vendors are optional; shared quotas still count.
+You need two separate lead contexts; an execution harness and model that can delegate to subagents and collect their results; finite capacity/budget; authorized repository and test access; and one objective, acceptance oracle and a four-hour timebox with a one-hour permission checkpoint. A provider/model supplies reasoning, while a harness supplies tools, delegation and communication. Two different vendors are optional; shared quotas still count.
 
 **Token efficiency never means silence.** Choose an operational A↔B channel for the actual harnesses. Native agent messaging, an orchestration bus, tmux with an existing herder adapter, cmux or another multiplexer plus a real transport, or protected computer use may serve. A multiplexer alone is not a mailbox. A saved ledger or a queued message does not establish that the other lead received a finding; Markdown cannot wake a suspended harness.
 
-Before the hour, send a unique probe each way and obtain an explicit recipient acknowledgment. Agree a receipt/timeout owner, a response bound and a safe fallback. By default an actionable finding needs a response before the next affected decision or within five minutes, whichever is sooner; adjust the bound upfront to the task. B directly delivers each actionable finding with an ID, recommendation, strongest objection and cheapest falsifier. A returns **adopt, test, reject or defer**, with a reason and concrete owner/next step or exact checkpoint as applicable. Keep submission, delivery/readback, receipt, disposition and actual execution separate.
+Before the clock, send a unique probe each way and obtain an explicit recipient acknowledgment. Agree a receipt/timeout owner, a response bound and a safe fallback. By default an actionable finding needs a response before the next affected decision or within five minutes, whichever is sooner; adjust the bound upfront to the task. B directly delivers each actionable finding with an ID, recommendation, strongest objection and cheapest falsifier. A returns **adopt, test, reject or defer**, with a reason and concrete owner/next step or exact checkpoint as applicable. Keep submission, delivery/readback, receipt, disposition and actual execution separate.
 
 Batch routine updates; deliver decision-changing findings proactively. If a response misses its bound, inspect an ambiguous send before one safe fallback or concise named-owner escalation, deduplicating the ID. Protect drafts and valid runs, continue unrelated work, and never claim the loop works while receipt is unresolved. A cannot silence B to save tokens, and B does not become an approval gate for every A action. Use an existing harness/orchestrator timeout mechanism or agreed relay; do not spend the incident building communication tooling.
 
@@ -65,7 +65,7 @@ For a first run:
 
 1. Load the skill in two separate contexts and assign A execution/B inversion using the [role prompts](skills/code-red/references/roles-and-messages.md).
 2. Fill in the [run card](skills/code-red/assets/run-card.md) with the actual objective, oracle, inputs, authority, protected work, budget and recipients.
-3. Verify worker capability and the reciprocal message probes; bind timeout/fallback ownership before starting the hour.
+3. Verify worker capability and the reciprocal message probes; bind timeout/fallback ownership before starting the clock.
 4. Start the clock, run bounded work, and directly notify the other lead when a finding changes a decision. A saved analysis needs an `updated path, please read` notice and an explicit disposition.
 
 The [setup and communication recipe](skills/code-red/references/setup-and-communication.md) covers these checks and the lost-message fallback in detail.
@@ -119,7 +119,7 @@ For Pi, OpenCode, Goose, Crush, or a harness using a DeepSeek-compatible provide
 
 Example:
 
-> Use Code Red. Within one hour, deliver an installable candidate that reproduces the reported failure, fixes it, and passes the existing acceptance checks. Keep all current agents' work intact. Use the available worker budget; do not purchase additional capacity.
+> Use Code Red. Within four hours—with a one-hour permission checkpoint—deliver an installable candidate that reproduces the reported failure, fixes it, and passes the existing acceptance checks. Keep all current agents' work intact. Use the available worker budget; do not purchase additional capacity.
 
 ## npm package
 

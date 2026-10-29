@@ -2,7 +2,8 @@
 
 Objective / acceptance oracle:
 Start (absolute, timezone):
-Deadline (start + 60 minutes; never reset):
+Deadline (start + 4 hours; never reset):
+One-hour permission checkpoint (absolute; present evidence, ask to continue):
 Current observation / source and input identity:
 Required constraints / existing authority:
 Fallback (explicitly partial if original objective unmet):

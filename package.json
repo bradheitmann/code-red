@@ -1,6 +1,6 @@
 {
   "name": "@bradheitmann/code-red",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "description": "Read-only Code Red skill and prompt distribution over MCP",
   "scripts": {

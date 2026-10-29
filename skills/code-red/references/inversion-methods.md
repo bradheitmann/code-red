@@ -21,7 +21,7 @@ Design a process guaranteed to miss the deadline: add shared writers, obscure th
 ## 3. Premortem
 
 **Use:** the chosen plan looks persuasive but has not met reality.
-Assume the hour ended without the artifact. Write three concrete causes independently before reading the team's explanations. Inspect the most consequential plausible cause now. Return one preemptive action, not another comprehensive risk register.
+Assume the checkpoint hour ended without the artifact. Write three concrete causes independently before reading the team's explanations. Inspect the most consequential plausible cause now. Return one preemptive action, not another comprehensive risk register.
 
 **Root:** [Gary Klein's premortem](https://www.gary-klein.com/premortem). Imagination generates hypotheses; it does not estimate their probability reliably.
 
@@ -42,7 +42,7 @@ Use the first-wave packet in SKILL.md. Hold real input and acceptance fixed, rem
 ## 6. Counterfactual dependency deletion
 
 **Use:** “we cannot do Y until X” has become unquestioned.
-Ask: if X did not exist, could the user still receive Y? Distinguish a necessary property from the current mechanism supplying it. Try an existing artifact, direct interface, precomputed result, or alternate supplier. The output is a removed dependency supported by a demonstration, or a specific reason it remains necessary. Replacing a four-hour proof with a labeled demo may help a meeting but does not complete the proof.
+Ask: if X did not exist, could the user still receive Y? Distinguish a necessary property from the current mechanism supplying it. Try an existing artifact, direct interface, precomputed result, or alternate supplier. The output is a removed dependency supported by a demonstration, or a specific reason it remains necessary. Replacing a multi-hour proof with a labeled demo may help a meeting but does not complete the proof.
 
 ## 7. Incentive reversal
 
@@ -89,7 +89,7 @@ Seek an honest useful artifact adjacent to the blocked path: a reproducible cand
 ## 13. Bottleneck migration
 
 **Use:** increasing parallelism lowers throughput.
-Measure the actual queue and resource occupancy. Is the bottleneck reasoning, shared disk, integration, an external rate limit, or a serial proof? Parallelize independent preparation around it; give the scarce step one owner. Recheck after moving it: the next bottleneck may appear elsewhere. Three concurrent four-hour serial runs do not become one eighty-minute run.
+Measure the actual queue and resource occupancy. Is the bottleneck reasoning, shared disk, integration, an external rate limit, or a serial proof? Parallelize independent preparation around it; give the scarce step one owner. Recheck after moving it: the next bottleneck may appear elsewhere. Three concurrent multi-hour serial runs do not become one eighty-minute run.
 
 ## 14. Minimal counterexample
 

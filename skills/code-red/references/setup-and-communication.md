@@ -1,6 +1,6 @@
 # Setup and communication
 
-Use this before the hour, especially for a first run. Installing Markdown gives
+Use this before the clock, especially for a first run. Installing Markdown gives
 an agent instructions; it does not install a worker runtime, mailbox or scheduler.
 
 ## What you need
@@ -11,7 +11,7 @@ an agent instructions; it does not install a worker runtime, mailbox or schedule
 | Execution capability | A's harness and selected model support the required tools, subagent delegation and worker-result collection. A chat model alone does not provide these. |
 | Finite capacity | Available lead/worker slots and a declared money/token/time budget. Shared account quotas still count; different vendors are not required. |
 | Authorized inputs and proof | Repository/input identity, tool/test access, one observable objective, the same acceptance oracle, constraints and protected outside work. |
-| Time and custody | A real clock, a 60-minute deadline, output/ledger location and existing integration authority. |
+| Time and custody | A real clock, a four-hour window with a one-hour permission checkpoint, output/ledger location and existing integration authority. |
 | Operational communication | A channel that actually reaches both chosen harnesses, reciprocal receipt probes, response bound, timeout owner and safe fallback. |
 
 A **harness** supplies tools, instruction loading, delegation and communication.
@@ -49,20 +49,20 @@ two-agent intervention.
    lead contexts and load `SKILL.md` in each. A needs the worker-capable harness;
    B needs the evidence and reasoning context, not a competing dispatcher.
 2. Give both leads one brief: objective, acceptance oracle, exact inputs/repository,
-   current authority, protected work, budget/slots, output path and intended hour.
+   current authority, protected work, budget/slots, output path and intended window.
    Use `assets/run-card.md`; replace example fields with real ones.
 3. Assign A/B actual identities and a supported communication route. Name its
    receipt/timeout owner, a fallback route and escalation owner. Set the actionable
    response bound to the next affected decision or five minutes, whichever is
    sooner, unless a different realistic bound is agreed upfront.
-4. Smoke-test the round trip **before the hour**. A sends `PROBE-A-01` directly to B;
+4. Smoke-test the round trip **before the clock**. A sends `PROBE-A-01` directly to B;
    B replies `PROBE-A-01 received` with its identity. B sends `PROBE-B-01`; A replies
    with the matching ID. Inspect actual recipient replies, not just successful
    send calls. Check that receipt and timeout follow-through can operate while
    the leads do useful work. If the route fails, use the declared safe fallback
    once or arrange the existing relay; do not begin with an imaginary mailbox.
-5. Read the actual clock, fix the hour's absolute deadline, and start the existing
-   role prompts in `roles-and-messages.md`. A dispatches within real capacity;
+5. Read the actual clock, fix the four-hour deadline and the one-hour permission
+   checkpoint, and start the existing role prompts in `roles-and-messages.md`. A dispatches within real capacity;
    B sends findings proactively. Both continue independent authorized work.
 6. For actionable findings, record notification ID, available delivery/readback,
    recipient receipt, A's disposition and eventual action result separately.

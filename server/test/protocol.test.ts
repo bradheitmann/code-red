@@ -45,7 +45,7 @@ test('resource list and every resource read exactly match canonical Markdown', a
 test('prompt lists and produces canonical skill plus task brief', async () => {
   const list = await rpc('prompts/list');
   assert.equal((list.body.result?.prompts as { name: string }[])[0]?.name, 'code-red');
-  const result = await rpc('prompts/get', { name: 'code-red', arguments: { objective: 'Ship usable outcome', oracle: 'Independent observed result', constraints: 'One hour' } });
+  const result = await rpc('prompts/get', { name: 'code-red', arguments: { objective: 'Ship usable outcome', oracle: 'Independent observed result', constraints: 'Four hours, one-hour permission checkpoint' } });
   const messages = result.body.result?.messages as { content: { text: string } }[];
   assert.match(messages[0]!.content.text, /Code Red/i);
   assert.match(messages[1]!.content.text, /Ship usable outcome/);
