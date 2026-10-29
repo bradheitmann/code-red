@@ -63,6 +63,20 @@ Parallelize independent hypotheses, packaging, narrow tests, and artifact prepar
 
 A usage estimate or warning is not exhaustion. On an actual limit/error, preserve the exact failure, keep unaffected work moving, and use an already-authorized fallback. Role takeover requires an existing delegation/owner instruction; this skill itself grants no authority over other teams. Transfer the remaining clock, budget, work ownership, and evidence rather than starting over.
 
+## Track worker progress with evidence, not inference
+
+Each worker packet carries a liveness checkpoint: task ID, the exact artifact or phase expected, an expected-by time within the original bound, the owner, the process handle or wait target, and an evidence pointer (where the artifact or state will appear). One named observer watches published artifacts; it does not poll the same expensive source or infer progress from token counts, CPU time, or message volume.
+
+On a missed checkpoint, run one bounded actual-state check against the evidence pointer before assuming anything. If two consecutive observations show the same obstruction with no new evidence, change the route, allocation, or hypothesis, or record an exact blocker with owner and next action — never mechanically retry, and never kill or reset a proof automatically. A quiet valid proof is not a stall; a quiet invalid wait is found by the state check, not by inference.
+
+Template: `LIVE-<task-id> phase <artifact|phase> expected by <hh:mm within bound>; owner <A|worker-n>; wait <handle/process>; evidence <path>`. A missed-deadline closeout records the timestamp it stopped and states continuation separately — what was delivered, what continues, under which owner — never relabeled as an in-time result.
+
+## One authoritative instruction revision per worker
+
+A worker has exactly one active instruction revision. A revision carries an explicit supersedes ID, the changed scope, the new base, the changed proofs/acceptance checks, and a safe apply boundary (what the worker may and may not change while applying it). The worker reports the applied revision ID after applying it. A delayed instruction or freeze cannot revive work the newer revision superseded; retries are deduplicated by revision ID. A routine acknowledgment is not a universal gate: it neither proves application nor blocks already-authorized independent work.
+
+Template: `REV-<n> supersedes REV-<n-1>; scope <changed>; base <new base>; proofs <changed checks>; apply boundary <may/may-not>; worker reports applied REV-<n>`.
+
 ## The four-hour window
 
 These are pacing guides, not wait gates. The first hour ends with a permission checkpoint; the remaining three hours continue only with explicit user approval.
