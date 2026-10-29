@@ -4,6 +4,7 @@ Objective / acceptance oracle:
 Start (absolute, timezone):
 Deadline (start + 4 hours; never reset):
 One-hour permission checkpoint (absolute; present evidence, ask to continue):
+  asked at / user answer / by whom:
 Current observation / source and input identity:
 Required constraints / existing authority:
 Fallback (explicitly partial if original objective unmet):
@@ -34,6 +35,15 @@ Unknown delivery/read fields stay unknown. A saved file or queue acceptance is
 not receipt. Batch routine notices; do not silence decision-changing findings.
 At a missed bound, inspect ambiguous submission before one safe fallback or
 named-owner escalation; deduplicate the ID and continue unrelated work.
+
+## Workers, revisions and liveness
+
+Per worker: task ID; instruction revision (`REV <n> SUPERSEDES <n-1>`); evidence
+pointer; expected artifact/phase and expected-by; owner; process handle or wait
+target; applied revision reported (yes/no).
+
+Liveness checkpoint per worker:
+`LIVE <task-id> — phase <artifact|phase> expected by <hh:mm>; owner; wait <handle>; evidence <path>`
 
 ## Closeout
 

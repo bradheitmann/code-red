@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { documents } from './generated/content.ts';
 
 export function createServer(): McpServer {
-  const server = new McpServer({ name: 'code-red', version: '1.0.0' }, {
+  const server = new McpServer({ name: 'code-red', version: '1.1.0' }, {
     instructions: 'Read-only Code Red skill distribution. Resources and prompts provide instructions; the server never runs agents, accesses workspaces, or stores user inputs.',
   });
   for (const document of documents) {
@@ -39,7 +39,7 @@ const mcp = createMcpHandler(() => createServer(), {
 export async function handleRequest(request: Request): Promise<Response> {
   const url = new URL(request.url);
   if (url.pathname === '/health' && request.method === 'GET') {
-    return Response.json({ status: 'ok', name: 'code-red', version: '1.0.0', readOnly: true, documents: documents.length });
+    return Response.json({ status: 'ok', name: 'code-red', version: '1.1.0', readOnly: true, documents: documents.length });
   }
   if (url.pathname !== '/mcp') return new Response('Not found. MCP endpoint: /mcp', { status: 404 });
   // This public read-only endpoint permits non-browser clients and same-origin browser use.

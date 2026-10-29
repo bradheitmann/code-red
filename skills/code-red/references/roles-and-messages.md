@@ -59,6 +59,22 @@ Time/token/cost ceiling; finish-by absolute time: ...
 Evidence output / report route / custody: ...
 No nested workers or conflicting assignments. Preserve other agents' in-flight work. Report a result, falsifier, or exact blocker; do not wait for an acknowledgement to continue already-authorized steps.
 
+## Worker liveness checkpoint
+
+Every worker packet carries a liveness checkpoint: task ID, the exact artifact or phase expected, an expected-by time within the original bound, the owner, the process handle or wait target, and an evidence pointer (where the artifact or state will appear). One named observer watches published artifacts; it does not poll the same expensive source or infer progress from token counts, CPU time, or message volume.
+
+Template:
+`LIVE <task-id> — phase <artifact|phase> expected by <hh:mm within bound>; owner <A|worker-n>; wait <handle/process>; evidence <path>`
+
+On a missed checkpoint, run one bounded actual-state check against the evidence pointer before assuming anything. Two unchanged observations with no new evidence → change the route, allocation, or hypothesis, or record an exact blocker with owner and next action. Never mechanically retry, and never kill or reset a proof automatically. A quiet valid proof is not a stall. A missed-deadline closeout records the timestamp it stopped and states continuation separately.
+
+## Worker instruction revision
+
+A worker has exactly one active instruction revision. A revision carries an explicit SUPERSEDES id, the changed scope, the new base, the changed proofs/acceptance checks, and a safe apply boundary (what the worker may and may not change while applying it). The worker reports the applied revision id after applying it. A delayed instruction or freeze cannot revive work the newer revision superseded; retries are deduplicated by revision id. A routine acknowledgment is not a universal gate: it neither proves application nor blocks already-authorized independent work.
+
+Template:
+`REV <n> SUPERSEDES <n-1> — scope <changed>; base <new base>; proofs <changed checks>; apply boundary <may/may-not>; worker reports applied REV <n>`
+
 ## Blind subtraction packet
 
 Use the worker fields above, omitting the inherited plan and diagnosis. Include all real acceptance requirements and safety constraints. Ask for up to three ways to remove a dependency, handoff, layer, or conversion; choose one cheap isolated test. Five minutes maximum, within existing budget. If safe execution cannot fit, provide an untested hypothesis with its falsifier. No new feature code is a search constraint for this probe, not a ban on code elsewhere in the run.
