@@ -9,7 +9,7 @@
   <rect width="1200" height="500" rx="20" fill="url(#grid)" opacity="0.55"/>
   <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
     <text x="55" y="64" fill="#ff7883" font-size="18" letter-spacing="4">CODE RED</text>
-    <text x="1145" y="64" text-anchor="end" fill="#a8bcc8" font-size="14" letter-spacing="2">2 LEADS / 1 OBJECTIVE / 60 MINUTES</text>
+    <text x="1145" y="64" text-anchor="end" fill="#a8bcc8" font-size="14" letter-spacing="2">2 LEADS / 1 OBJECTIVE / 4 HOURS / 1H CHECKPOINT</text>
     <path d="M55 90H1145" stroke="#384651"/>
     <path d="M270 208H500 M700 208H915" stroke="#647480" stroke-width="3" stroke-dasharray="7 7"/>
     <rect x="55" y="158" width="215" height="100" rx="10" fill="#222c44" stroke="#9aa9ff"/>
